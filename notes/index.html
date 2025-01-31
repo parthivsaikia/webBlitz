@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple To-Do List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 400px;
+            margin: auto;
+            text-align: center;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            display: flex;
+            justify-content: space-between;
+            background: #f4f4f4;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+        button {
+            background: red;
+            color: white;
+            border: none;
+            padding: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h2>To-Do List</h2>
+    <input type="text" id="taskInput" placeholder="Enter task">
+    <button onclick="addTask()">Add</button>
+    <ul id="taskList"></ul>
+
+    <script>
+        const addTask = () => {
+            const taskName = document.querySelector('#taskInput').value
+            const taskList = document.querySelector('#taskList')
+            const task = document.createElement('li')
+            task.textContent = taskName
+            taskList.append(task)
+
+            const removeBtn = document.createElement('button')
+            removeBtn.textContent = 'X'
+            const remove = () => {
+                task.remove()
+            }
+            removeBtn.addEventListener('click', remove)
+            task.append(removeBtn)
+        }
+    </script>
+</body>
+</html>

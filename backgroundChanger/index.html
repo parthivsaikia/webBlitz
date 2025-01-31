@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Background Image Changer</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .form-box {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+        }
+
+        input[type="url"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .reset {
+            background-color: #f44336;
+        }
+
+        .reset:hover {
+            background-color: #da190b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-box">
+            <h2>Background Image Changer</h2>
+            <input type="url" id="imageUrl" placeholder="Paste image URL here">
+            <button onclick="setBackground()">Set Background</button>
+            <button class="reset" onclick="resetBackground()">Reset</button>
+        </div>
+    </div>
+
+    <script>
+        function setBackground() {
+            const imageUrl = document.getElementById('imageUrl').value;
+            document.body.style.backgroundImage = `url('${imageUrl}')`;
+            document.getElementById('imageUrl').value = '';
+        }
+
+        function resetBackground() {
+            document.body.style.backgroundImage = 'none';
+            document.body.style.backgroundColor = '#f0f0f0';
+            document.getElementById('imageUrl').value = '';
+        }
+
+        // Add Enter key support
+        document.getElementById('imageUrl').addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') {
+                setBackground();
+            }
+        });
+    </script>
+</body>
+</html>

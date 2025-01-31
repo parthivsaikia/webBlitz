@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Guess the Number</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: #f0f0f0;
+        }
+
+        .game-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 400px;
+            margin: 0 auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 16px;
+            width: 100px;
+            margin: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #message {
+            margin: 20px;
+            font-size: 18px;
+        }
+
+        .attempts {
+            margin-top: 20px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>Guess the Number!</h1>
+        <p>I'm thinking of a number between 1 and 100</p>
+        
+        <input type="number" id="guess" placeholder="Enter guess">
+        <button>Submit Guess</button>
+        
+        <div id="message"></div>
+        <div class="attempts">Attempts: <span id="attempts">0</span></div>
+    </div>
+
+    <script>
+        let randomNumber = Math.floor(Math.random() * 100) + 1;
+        let attempts = 0;
+
+        const checkGuess = () => {
+            const guess = parseInt(document.querySelector('#guess').value);
+            attempts++;
+            const msg = document.querySelector('#message');
+            const attemptsSpan = document.querySelector('#attempts');
+            attemptsSpan.textContent = attempts;
+
+            // Clear input field
+            document.querySelector('#guess').value = '';
+
+
+            if (guess === randomNumber) {
+                msg.style.color = 'green';
+                msg.textContent = `Congratulations! You guessed the correct number in ${attempts} attempts!`;
+                document.querySelector('button').disabled = true;
+                document.querySelector('#guess').disabled = true;
+            } else if (guess > randomNumber) {
+                msg.style.color = 'red';
+                msg.textContent = 'Too high! Try again.';
+            } else {
+                msg.style.color = 'red';
+                msg.textContent = 'Too low! Try again.';
+            }
+        }
+
+        // Add click event listener
+        document.querySelector('button').addEventListener('click', checkGuess);
+
+    </script>
+</body>
+</html>
