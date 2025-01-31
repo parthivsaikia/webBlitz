@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Toggle</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+            background-color: #f8fafc;
+        }
+
+        body.dark {
+            background-color: #0f172a;
+        }
+
+        .toggle-btn {
+            background: none;
+            border: 2px solid #64748b;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-btn:hover {
+            transform: scale(1.1);
+        }
+
+        body.dark .toggle-btn {
+            border-color: #94a3b8;
+        }
+
+    </style>
+</head>
+<body>
+    <button class="toggle-btn" aria-label="Toggle theme">
+        Change Theme
+    </button>
+
+    <script>
+        const btn = document.querySelector('.toggle-btn');
+        
+        btn.addEventListener('click', () => {
+            document.body.classList.toggle('dark');
+        });
+    </script>
+</body>
+</html>
