@@ -35,6 +35,7 @@ function dropApple() {
             box.appendChild(nice);
             box.appendChild(refreshButton);
             refreshButton.addEventListener("click", () => {
+                input.value = "";
                 window.location.reload();
             });
             return;
