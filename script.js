@@ -4,6 +4,8 @@ const input = document.getElementById("input");
 const btn = document.getElementById("btn");
 const box = document.getElementById("input-container");
 
+input.value = ""
+
 let speed = 0;
 let gravity = 0.3;
 let falling = false;
