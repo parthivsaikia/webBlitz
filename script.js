@@ -49,7 +49,7 @@ function dropApple() {
     animate();
 }
 
-btn.addEventListener("click", () => {
+const newt = () => {
     if (input.value.trim().toLowerCase() === "newton") {
         dropApple();
     }
@@ -66,5 +66,12 @@ btn.addEventListener("click", () => {
             box.removeChild(hi);
             box.removeChild(hi2);
         }, 2000);
+    }
+}
+
+btn.addEventListener("click", newt());
+input.addEventListener('keyup', function(event) {
+    if (event.key === 'Enter') {
+        setBackground();
     }
 });
